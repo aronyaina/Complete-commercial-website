@@ -27,7 +27,7 @@ services:
       dockerfile: Dockerfile
     #exposition de port exterieur pour le premier et interieur pour le deuxieme   
     ports:
-      - 5000:80
+      - 5000:5000
     #relie le reseaux dans shared network   
     networks:
       - shared-network
@@ -53,7 +53,7 @@ services:
       dockerfile: Dockerfile
     #exposition de port interieur pour le premier et exterieur pour le deuxieme 
     ports:
-      - 5173:5173
+      - 5173:80
     #relie le reseaux dans shared network 
     networks:
       - shared-network
