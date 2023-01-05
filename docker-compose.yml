@@ -1,0 +1,68 @@
+version: '3.8'
+
+# TOUT LES SERVICES A LANCE
+services:
+  # PERMET DE METTRE A JOUR LES IMAGES
+  watchtower:
+    image: containrrr/watchtower:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      - reactjs
+  # PARTIE SERVER NODEJS
+  nodejs:
+    #Nom du container
+    container_name: node-server
+    #Restart le server dans le cas d'une erreur
+    restart: unless-stopped
+    #Dernier images de nodejs
+    image: ravaronyaina/node-commercial-server:1.2.RELEASE
+    
+    #Reference de l'environnement variables node     
+    environment:
+      - NODE_ENV=production_server
+    #recherche de dockerfile dans build dans client  
+    build:
+      context: server
+      dockerfile: Dockerfile
+    #exposition de port exterieur pour le premier et interieur pour le deuxieme   
+    ports:
+      - 5000:5000
+    #relie le reseaux dans shared network   
+    networks:
+      - shared-network
+    #Map le stockage d'image 
+    volumes:
+      - ./server/upload:/usr/src/commercial-app/server/upload
+    
+  # PARTIE CLIENT REACTJS
+  reactjs:
+    #Nom du container
+    container_name: react-client
+    #Restart le server dans le cas d'une erreur
+    restart: unless-stopped
+    #Dernier images de reactjs
+    image: ravaronyaina/reactjs-commercial-client:1.2.RELEASE
+    
+    #Reference de l'environnement node 
+    environment:
+      - REACT_ENV=production_client
+    #recherche de dockerfile dans build dans client
+    build:
+      context: client
+      dockerfile: Dockerfile
+    #exposition de port interieur pour le premier et exterieur pour le deuxieme 
+    ports:
+      - 5173:5173
+    #relie le reseaux dans shared network 
+    networks:
+      - shared-network
+    # Depend de nodejs
+    depends_on:
+      - nodejs
+
+    
+  
+#Creer et assigne tout les container dans le memes reseaux
+networks:
+  shared-network:

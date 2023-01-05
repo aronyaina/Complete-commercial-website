@@ -1,0 +1,18 @@
+{
+  "files.exclude": {
+    // "server/.gitignore": true,
+    // "server/node_modules/": true,
+    // "server/README.md": true,
+    // "server/package.json": false,
+    // "server/package-lock.json": true,
+    // "client/package.json": true,
+    // "client/package-lock.json": true,
+    // "client/.gitignore": true,
+    // "client/README.md": true,
+    // "client/node_modules": true,
+    // "client/.env": true,
+    // "server/.env": false,
+    // "client/vite.config.js": true
+  },
+  "workbench.iconTheme": "material-icon-theme"
+}
