@@ -16,7 +16,7 @@ services:
     #Restart le server dans le cas d'une erreur
     restart: unless-stopped
     #Dernier images de nodejs
-    image: ravaronyaina/node-commercial-server:1.2.RELEASE
+    image: ravaronyaina/node-commercial-server:1.3.RELEASE
     
     #Reference de l'environnement variables node     
     environment:
@@ -42,7 +42,7 @@ services:
     #Restart le server dans le cas d'une erreur
     restart: unless-stopped
     #Dernier images de reactjs
-    image: ravaronyaina/reactjs-commercial-client:1.2.RELEASE
+    image: ravaronyaina/reactjs-commercial-client:1.3.RELEASE
     
     #Reference de l'environnement node 
     environment:
@@ -51,9 +51,9 @@ services:
     build:
       context: client
       dockerfile: Dockerfile
-    #exposition de port interieur pour le premier et exterieur pour le deuxieme 
+    #exposition de port exterieur pour le premier et interieur pour le deuxieme 
     ports:
-      - 5173:80
+      - 80:5173
     #relie le reseaux dans shared network 
     networks:
       - shared-network
