@@ -16,7 +16,7 @@ services:
     #Restart le server dans le cas d'une erreur
     restart: unless-stopped
     #Dernier images de nodejs
-    image: ravaronyaina/node-commercial-server:1.4.RELEASE
+    image: ravaronyaina/node-commercial-server:1.5.RELEASE
     
     #Reference de l'environnement variables node     
     environment:
@@ -42,7 +42,7 @@ services:
     #Restart le server dans le cas d'une erreur
     restart: unless-stopped
     #Dernier images de reactjs
-    image: ravaronyaina/reactjs-commercial-client:1.4.RELEASE
+    image: ravaronyaina/reactjs-commercial-client:1.5.RELEASE
     
     #Reference de l'environnement node 
     environment:
